@@ -13,12 +13,18 @@ return new class extends Migration
     {
         Schema::create('escalas', function (Blueprint $table) {
             $table->id();
+            $table->usintBigInteger('id_medico');
+            $table->usintBigInteger('id_plantao');
             $table->timestamps();
+            $table->foreign('id_medico')->references('id')->on('medicos')->onDelete('cascade');
+            $table->foreign('id_plantao')->references('id')->on('plantoes')->onDelete('cascade');
         });
     }
 
     /**
      * Reverse the migrations.
+     * 
+     * 
      */
     public function down(): void
     {

@@ -1,0 +1,26 @@
+renomear .env.example -> .env
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+
+composer install
+
+npm install
+
+php artisan migrate
+
+
+
+
+
+
+----------------------------------
+
+problemas com key master -> php artisan key:generate
+
+segundo problema -> abrir bash -> npm run dev -> rodar php artisan serve de novo
