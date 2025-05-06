@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('controle_horas', function (Blueprint $table) {
             $table->id();
-            $table->usintBigInteger('id_medico');
-            $table->usintBigInteger('id_plantao');
+            $table->unsignedBigInteger('id_medico');
+            $table->unsignedBigInteger('id_plantao');
             $table->time('horas_trabalhadas');
             $table->timestamps();
             $table->foreign('id_medico')->references('id')->on('medicos')->onDelete('cascade');
