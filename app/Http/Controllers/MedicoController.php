@@ -77,9 +77,9 @@ class MedicoController extends Controller
             'especializacao'  => 'required|string',
         ]);
         
-        if ($medico->created_by !== Auth::id()) {
-            abort(403);
-        }
+        //if ($medico->created_by !== Auth::id()) {
+        //    abort(403);
+        //}
 
         $medico->update($data);
 
@@ -95,9 +95,9 @@ class MedicoController extends Controller
     {
         $medico = Medicos::findOrFail($id);
         
-        if ($medico->created_by !== Auth::id()) {
-            abort(403);
-        }
+        //if ($medico->created_by !== Auth::id()) {
+        //    abort(403);
+        //}
 
         $medico->delete();
 

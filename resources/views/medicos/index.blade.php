@@ -21,11 +21,11 @@
           @foreach($medicos as $medico)
             <tr>
               <td>{{ $medico->nome }}</td>
-              <td title="{{ $medico-cpf}}">
-                {{ ($medico-cpf) }}
+              <td title="{{ $medico->cpf}}">
+                {{ ($medico->cpf) }}
               </td>
-              <td title="{{ $medico-contato}}">
-                {{ ($medico-contato) }}
+              <td title="{{ $medico->contato}}">
+                {{ ($medico->contato) }}
               </td>
               <td title="{{ $medico->especializacao }}">
                 {{ ($medico->especializacao) }}
