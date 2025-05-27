@@ -1,4 +1,7 @@
 <x-layouts.app :title="__('Editar Medico')" :dark-mode="auth()->user()->pref_dark_mode">
+  <head>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    </head>
   <div>
     <h1>Editar Médico</h1>
 
@@ -45,7 +48,7 @@
       </div>
 
       <div style="margin-top:1em;">
-        <button type="submit">Atualizar</button>
+        <button type="button" class="atualizar">Salvar</button>
         <a href="{{ route('medicos.show', $medico) }}">Cancelar</a>
       </div>
     </form>

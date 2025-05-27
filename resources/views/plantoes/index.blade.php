@@ -8,7 +8,7 @@
     @if($plantoes->isEmpty())
       <p>Nenhum plantão cadastrado.</p>
     @else
-      <table border="1" cellpadding="8" cellspacing="0">
+      <table class="table">
         <thead>
           <tr>
             <th>Especialização</th>
@@ -27,14 +27,14 @@
                 {{ ($plantao->data_fim) }}
               </td>
               <td>
-                <a href="{{ route('plantoes.show', $plantao) }}">Ver</a>
+                <a href="{{ route('plantoes.show', $plantao) }}" class="link blue">Ver</a>
                 |
-                <a href="{{ route('plantoes.edit', $plantao) }}">Editar</a>
+                <a href="{{ route('plantoes.edit', $plantao) }}" class="link yellow">Editar</a>
                 |
                 <form action="{{ route('plantoes.destroy', $plantao) }}" method="POST" style="display:inline" onsubmit="return confirm('Tem certeza que deseja excluir este plantão?')">
                   @csrf
                   @method('DELETE')
-                  <button type="submit">Excluir</button>
+                  <button type="button" class="btn-excluir link red" id="btn-excluir" data-nome= "{{ $plantao->nome }}" >Excluir</button>
                 </form>
               </td>
             </tr>

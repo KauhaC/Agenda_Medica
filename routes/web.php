@@ -5,9 +5,9 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MedicoController;
-//use App\Http\Controllers\PlantaoController;
-//use App\Http\Controllers\EscalaContoller;
-//use App\Http\Controllers\ControleHoraController;
+use App\Http\Controllers\PlantaoController;
+use App\Http\Controllers\EscalaContoller;
+use App\Http\Controllers\ControleHoraController;
 
 
 Route::get('/', function () {
@@ -31,8 +31,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::resource('medicos',MedicoController::class);
-//Route::resource('plantoes',PlantaoController::class);
-//Route::resource('escalas',EscalaController::class);
-//Route::resource('controle_horas',ControleHorasController::class);
+Route::resource('plantoes',PlantaoController::class);
+Route::resource('escalas',EscalaController::class);
+Route::resource('controle_horas',ControleHorasController::class);
 
 require __DIR__.'/auth.php';

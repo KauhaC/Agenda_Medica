@@ -7,8 +7,8 @@
 </head>
 <body>
 <div class="container">
-        <h1>Nova Escala</h1>
-        <form action="{{route('escalas.**')}}">
+        <h1>Novo Plantão</h1>
+        <form action="{{route('plantoes.create')}}">
         @csrf
         <div class="form-group">
             <label for="especializacao">Especialização: </label>
@@ -23,8 +23,8 @@
             <input type="date" name="data_fim">
         </div>
 
-        <button type="submit" class="btn btn-success">Salvar</button>
-        <a href="{{ route('escalas.index') }}" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-success" >Salvar</button>
+        <a href="{{ route('plantoes.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>
