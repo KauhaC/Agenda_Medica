@@ -12,6 +12,8 @@ composer install
 
 npm install
 
+ npm install sweetalert2
+
 
 
 php artisan serve
