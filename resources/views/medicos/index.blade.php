@@ -5,7 +5,7 @@
   <div>
     <div>
       <h1>Meus Médicos</h1>
-      <a href="{{ route('medicos.create') }}">+ Novo Médico</a>
+      <a href="{{ route('medicos.create') }}" class="link green">+ Novo Médico</a>
     </div>
 
     @if($medicos->isEmpty())

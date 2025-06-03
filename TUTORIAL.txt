@@ -24,3 +24,12 @@ php artisan serve
 problemas com key master -> php artisan key:generate
 
 segundo problema -> abrir bash -> npm run dev -> rodar php artisan serve de novo
+
+
+desafio:
+
+estilizar sidebar
+icones heroicons
+arquivo sidebar: views>components>layouts>app
+
+estilizar Dashboard

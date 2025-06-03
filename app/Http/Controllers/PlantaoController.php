@@ -31,13 +31,11 @@ class PlantaoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nome'       => 'required|string|max:255',
-            'cpf'        => 'required|string|max:11',
-            'contato'    => 'nullable|string|max:11',
-            'especializacao'  => 'string'
+            'data_inicio'       => 'required|date',
+            'data_fim'        => 'required|date',
+            'especializacao'  => 'string|max:100'
         ]);
 
-        // $data['created_by'] = Auth::id();
 
         $plantao = Plantoes::create($data);
 
@@ -71,20 +69,16 @@ class PlantaoController extends Controller
     {
         $plantao = Plantoes::findOrFail($id);
         $data = $request->validate([
-            'nome'       => 'required|string|max:255',
-            'cpf'        => 'required|string|max:11',
-            'contato'    => 'nullable|string|max:11',
-            'especializacao'  => 'required|string',
+            'data_inicio'       => 'required|date',
+            'data_fim'        => 'required|date',
+            'especializacao'  => 'string|max:100'
         ]);
         
-        //if ($medico->created_by !== Auth::id()) {
-        //    abort(403);
-        //}
 
         $plantao->update($data);
 
         return redirect()
-            ->route('plantoes.show', $medico)
+            ->route('plantoes.show', $plantao)
             ->with('success', 'Plantões atualizado com sucesso!');
     }
 
@@ -95,9 +89,6 @@ class PlantaoController extends Controller
     {
         $plantao = Plantoes::findOrFail($id);
         
-        //if ($medico->created_by !== Auth::id()) {
-        //    abort(403);
-        //}
 
         $plantao->delete();
 

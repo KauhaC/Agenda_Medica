@@ -144,6 +144,10 @@ button[type="submit"]:hover {
     color: #dc3545;
 }
 
+.link.green {
+    color: green;
+}
+
 .text-center {
     text-align: center;
 }

@@ -42,7 +42,7 @@ class MedicoController extends Controller
         $medico = Medicos::create($data);
 
         return redirect()
-            ->route('medicos.show', $medico)
+            ->route('medicos.index', $medico)
             ->with('success', 'Medico criado com sucesso!');
     }
 
@@ -84,7 +84,7 @@ class MedicoController extends Controller
         $medico->update($data);
 
         return redirect()
-            ->route('medicos.show', $medico)
+            ->route('medicos.index')
             ->with('success', 'Medicos atualizado com sucesso!');
     }
 

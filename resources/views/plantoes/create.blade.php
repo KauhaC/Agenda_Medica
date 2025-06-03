@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<div class="container">
+<x-layouts.app>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    </head>
+    <div class="container">
         <h1>Novo Plantão</h1>
         <form action="{{route('plantoes.create')}}">
         @csrf
@@ -27,5 +26,4 @@
         <a href="{{ route('plantoes.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
-</body>
-</html>
+</x-layouts.app>

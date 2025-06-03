@@ -30,13 +30,14 @@ document.querySelectorAll('.btn-excluir').forEach(button => {
 document.querySelectorAll('.atualizar').forEach(button => {
   button.addEventListener('click', function() {
     const form = this.closest('form');
-    const nome = this.dataset.nome;
 
     Swal.fire({
-  title: "Salvo!",
-  icon: "success",
-  draggable: true
-    });
+    title: "Salvo!",
+    icon: "success",
+    draggable: true
+  }).then(() => {
+    form.submit();
+  });
   });
 });
 

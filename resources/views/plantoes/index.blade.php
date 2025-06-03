@@ -1,4 +1,7 @@
 <x-layouts.app :title="__('Meus Plantoes')">
+<head>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    </head>
   <div>
     <div>
       <h1>Meus Plantões</h1>
