@@ -1,4 +1,8 @@
 <x-layouts.app :title="__('Editar Plantão')" :dark-mode="auth()->user()->pref_dark_mode">
+  <head>
+      <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  </head>
+
   <div>
     <h1>Editar Plantão</h1>
 
@@ -20,7 +24,7 @@
       <div style="margin-top:1em;">
         <label for="data_inicio">Data de início</label><br>
         <input 
-          type="date"
+          type="datetime-local"
           name="data_inicio"
           id="data_inicio"
           value="{{ old('data_inicio', $plantao->data_inicio) }}">
@@ -29,6 +33,7 @@
       <div style="margin-top:1em;">
         <label for="data_fim">Data de fim</label><br>
         <input
+          type="datetime-local"
           name="data_fim"
           id="data_fim"
           value="{{ old('data_fim', $plantao->data_fim) }}" >

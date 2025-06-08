@@ -1,22 +1,35 @@
-<x-layouts.app>
+<x-layouts.app :title="__('Detalhes da Entrada de Horas')">
+  <head>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  </head>
+
   <div>
-    <h1>{{ $plantao->especializacao }}</h1>
+    <h1>Detalhes da Entrada de Horas</h1>
 
-    @if($plantao->especializacao)
-      <p>{{ $plantao->especializacao }}</p>
-    @endif
+    <div class="card">
+      <div class="card-section">
+        <h2>Médico:</h2>
+        <p>{{ $controle_hora->medico->nome }}</p>
+      </div>
+    </div>
 
-    @if($plantao->data_inicio)
-      <p>{{ $plantao->data_inicio }}</p>
-    @endif
+    <div class="card">
+      <div class="card-section">
+        <h2>Plantão:</h2>
+        <p>{{ $controle_hora->plantao->especializacao }}</p>
+      </div>
+    </div>
 
-    @if($plantao->data_fim)
-      <p>{{ $plantao->data_fim }}</p>
-    @endif
+    <div class="card">
+      <div class="card-section">
+        <h2>Horas Trabalhadas:</h2>
+        <p>{{ $controle_hora->horas_trabalhadas }}</p>
+      </div>
+    </div>
 
     <div>
-      <a href="{{ route('plantoes.create') }}">Novo Plantão</a>
-      <a href="{{ url()->previous() }}">Voltar</a>
+      <a href="{{ route('controle_horas.edit', $controle_hora) }}" class="btn yellow">Editar</a>
+      <a href="{{ route('controle_horas.index') }}" class="btn gray">Voltar</a>
     </div>
   </div>
 </x-layouts.app>

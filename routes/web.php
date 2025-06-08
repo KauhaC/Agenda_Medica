@@ -6,7 +6,7 @@ use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PlantaoController;
-use App\Http\Controllers\EscalaContoller;
+use App\Http\Controllers\EscalaController;
 use App\Http\Controllers\ControleHoraController;
 
 
@@ -33,6 +33,6 @@ Route::middleware(['auth'])->group(function () {
 Route::resource('medicos',MedicoController::class);
 Route::resource('plantoes',PlantaoController::class);
 Route::resource('escalas',EscalaController::class);
-Route::resource('controle_horas',ControleHorasController::class);
+Route::resource('controle_horas',ControleHoraController::class);
 
 require __DIR__.'/auth.php';

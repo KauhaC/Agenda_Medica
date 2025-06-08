@@ -1,43 +1,44 @@
-<x-layouts.app :title="__('Editar Plantão')" :dark-mode="auth()->user()->pref_dark_mode">
-  <div>
-    <h1>Editar Plantão</h1>
+<x-layouts.app :title="__('Editar Entrada de Horas')">
+  <head>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  </head>
 
-    <form action="{{ route('plantoes.update', $plantao) }}" method="POST">
+  <div>
+    <h1>Editar Entrada de Horas</h1>
+
+    <form method="POST" action="{{ route('controle_horas.update', $controle_hora) }}">
       @csrf
       @method('PUT')
 
-      <div>
-        <label for="especializacao">Especialização</label><br>
-        <input
-          type="text"
-          name="especializacao"
-          id="especializacao"
-          value="{{ old('especializacao', $plantao->especializacao) }}"
-          required
-        >
+      <div class="form-group">
+        <label for="id_medico">Médico:</label>
+        <select name="id_medico" id="id_medico" class="form-control" required>
+          @foreach($medicos as $medico)
+            <option value="{{ $medico->id }}" {{ $controle_hora->id_medico == $medico->id ? 'selected' : '' }}>
+              {{ $medico->nome }}
+            </option>
+          @endforeach
+        </select>
       </div>
 
-      <div style="margin-top:1em;">
-        <label for="data_inicio">Data de início</label><br>
-        <input 
-          type="date"
-          name="data_inicio"
-          id="data_inicio"
-          value="{{ old('data_inicio', $plantao->data_inicio) }}">
+      <div class="form-group">
+        <label for="id_plantao">Plantão:</label>
+        <select name="id_plantao" id="id_plantao" class="form-control" required>
+          @foreach($plantoes as $plantao)
+            <option value="{{ $plantao->id }}" {{ $controle_hora->id_plantao == $plantao->id ? 'selected' : '' }}>
+              {{ $plantao->especializacao }}
+            </option>
+          @endforeach
+        </select>
       </div>
 
-      <div style="margin-top:1em;">
-        <label for="data_fim">Data de fim</label><br>
-        <input
-          name="data_fim"
-          id="data_fim"
-          value="{{ old('data_fim', $plantao->data_fim) }}" >
+      <div class="form-group">
+        <label for="horas_trabalhadas">Horas Trabalhadas:</label>
+        <input type="time" name="horas_trabalhadas" class="form-control" value="{{ $controle_hora->horas_trabalhadas }}" required>
       </div>
 
-      <div style="margin-top:1em;">
-        <button type="submit">Atualizar</button>
-        <a href="{{ route('plantoes.show', $plantao) }}">Cancelar</a>
-      </div>
+      <button type="submit" class="btn btn-success">Atualizar</button>
+      <a href="{{ route('controle_horas.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
   </div>
 </x-layouts.app>

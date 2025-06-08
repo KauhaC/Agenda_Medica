@@ -40,7 +40,7 @@ class PlantaoController extends Controller
         $plantao = Plantoes::create($data);
 
         return redirect()
-            ->route('plantoes.show', $plantao)
+            ->route('plantoes.index', $plantao)
             ->with('success', 'Plantão criado com sucesso!');
     }
 
@@ -78,7 +78,7 @@ class PlantaoController extends Controller
         $plantao->update($data);
 
         return redirect()
-            ->route('plantoes.show', $plantao)
+            ->route('plantoes.index')
             ->with('success', 'Plantões atualizado com sucesso!');
     }
 

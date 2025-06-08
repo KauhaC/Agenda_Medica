@@ -1,4 +1,5 @@
-<x-layouts.app :title="__('Editar Escala')" :dark-mode="auth()->user()->pref_dark_mode">
+<x-layouts.app :title="__('Editar Escala')">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <div>
     <h1>Editar Escala</h1>
 
@@ -6,37 +7,33 @@
       @csrf
       @method('PUT')
 
-      <div>
-        <label for="especializacao">Especialização</label><br>
-        <input
-          type="text"
-          name="especializacao"
-          id="especializacao"
-          value="{{ old('especializacao', $escala->especializacao) }}"
-          required
-        >
+      <div class="form-group">
+        <label for="id_medico">Médico</label>
+        <select name="id_medico" id="id_medico" required>
+          @foreach ($medicos as $medico)
+            <option value="{{ $medico->id }}" {{ $escala->id_medico == $medico->id ? 'selected' : '' }}>
+              {{ $medico->nome }} - {{ $medico->especializacao }}
+            </option>
+          @endforeach
+        </select>
       </div>
 
-      <div style="margin-top:1em;">
-        <label for="data_inicio">Data de início</label><br>
-        <input 
-          type="date"
-          name="data_inicio"
-          id="data_inicio"
-          value="{{ old('data_inicio', $escala->data_inicio) }}">
+      <div class="form-group">
+        <label for="id_plantao">Plantão</label>
+        <select name="id_plantao" id="id_plantao" required>
+          @foreach ($plantoes as $plantao)
+            <option value="{{ $plantao->id }}" {{ $escala->id_plantao == $plantao->id ? 'selected' : '' }}>
+              {{ $plantao->especializacao }} - 
+              {{ \Carbon\Carbon::parse($plantao->data_inicio)->format('d/m/Y H:i') }} até 
+              {{ \Carbon\Carbon::parse($plantao->data_fim)->format('d/m/Y H:i') }}
+            </option>
+          @endforeach
+        </select>
       </div>
 
-      <div style="margin-top:1em;">
-        <label for="data_fim">Data de fim</label><br>
-        <input
-          name="data_fim"
-          id="data_fim"
-          value="{{ old('data_fim', $escala->data_fim) }}" >
-      </div>
-
-      <div style="margin-top:1em;">
-        <button type="submit">Atualizar</button>
-        <a href="{{ route('escalas.show', $escala) }}">Cancelar</a>
+      <div class="form-buttons">
+        <button type="button" class="btn atualizar" id="atualizar">Atualizar</button>
+        <a href="{{ route('escalas.index') }}" class="btn gray">Cancelar</a>
       </div>
     </form>
   </div>

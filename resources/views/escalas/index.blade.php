@@ -1,9 +1,13 @@
-<x-layouts.app :title="__('Meus Escalas')">
+<x-layouts.app :title="__('Escalas')">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <div>
-    <div>
-      <h1>Meus Escalas</h1>
-      <a href="{{ route('escalas.create') }}">+ Nova Escala</a>
-    </div>
+    <h1>Escalas</h1>
+
+    <a href="{{ route('escalas.create') }}" class="btn btn-primary">Nova Escala</a>
+
+    @if(session('success'))
+      <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 
     @if($escalas->isEmpty())
       <p>Nenhuma escala cadastrada.</p>
@@ -11,30 +15,27 @@
       <table class="table">
         <thead>
           <tr>
+            <th>Médico</th>
             <th>Especialização</th>
-            <th>data_inicio</th>
-            <th>data_fim</th>
+            <th>Data Início</th>
+            <th>Data Fim</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
           @foreach($escalas as $escala)
             <tr>
-              <td>{{ $escala->especializacao }}</td>
-              <td title="{{ $plantao->data_inicio }}">
-                {{ ($escala->data_inicio) }}
-              </td>
-              <td title="{{ $plantao->data_fim }}">
-                {{ ($escala->data_fim) }}
-              </td>
+              <td>{{ $escala->medico->nome }}</td>
+              <td>{{ $escala->plantao->especializacao }}</td>
+              <td>{{ \Carbon\Carbon::parse($escala->plantao->data_inicio)->format('d/m/Y H:i') }}</td>
+              <td>{{ \Carbon\Carbon::parse($escala->plantao->data_fim)->format('d/m/Y H:i') }}</td>
               <td>
                 <a href="{{ route('escalas.show', $escala) }}" class="link blue">Ver</a>
-                |
                 <a href="{{ route('escalas.edit', $escala) }}" class="link yellow">Editar</a>
-                |
-                <form action="{{ route('escalas.destroy', $escala) }}" method="POST" style="display:inline" onsubmit="return confirm('Tem certeza que deseja excluir esta escala?')">
+                <form action="{{ route('escalas.destroy', $escala) }}" method="POST" class="d-inline" onsubmit="return confirm('Tem certeza que deseja excluir essa escala?')">
                   @csrf
                   @method('DELETE')
-                  <button type="button" class="btn-excluir link red" id="btn-excluir" data-nome= "{{ $escala->nome }}" >Excluir</button>
+                  <button type="button" class="btn-excluir link red" id="btn-excluir">Excluir</button>
                 </form>
               </td>
             </tr>

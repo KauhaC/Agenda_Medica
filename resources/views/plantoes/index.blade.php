@@ -5,7 +5,7 @@
   <div>
     <div>
       <h1>Meus Plantões</h1>
-      <a href="{{ route('plantoes.create') }}">+ Novo Plantão</a>
+      <a href="{{ route('plantoes.create') }}" class="link green">+ Novo Plantão</a>
     </div>
 
     @if($plantoes->isEmpty())
@@ -17,12 +17,16 @@
             <th>Especialização</th>
             <th>data_inicio</th>
             <th>data_fim</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
           @foreach($plantoes as $plantao)
             <tr>
-              <td>{{ $plantao->especializacao }}</td>
+              
+              <td title="{{ $plantao->especializacao }}">
+                {{ ($plantao->especializacao) }}
+              </td>
               <td title="{{ $plantao->data_inicio }}">
                 {{ ($plantao->data_inicio) }}
               </td>

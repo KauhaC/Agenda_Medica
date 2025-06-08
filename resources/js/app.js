@@ -6,7 +6,7 @@ document.querySelectorAll('.btn-excluir').forEach(button => {
     const nome = this.dataset.nome;
 
     Swal.fire({
-      title: `Tem certeza que deseja excluir "${nome}"?`,
+      title: `Tem certeza que deseja excluir?`,
       text: "Você não poderá reverter isso!",
       icon: "warning",
       showCancelButton: true,
