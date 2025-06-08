@@ -12,12 +12,124 @@
             </a>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Platform')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-                </flux:navlist.group>
-            </flux:navlist>
 
-            <flux:spacer />
+    <flux:navlist.item
+    :href="route('dashboard')"
+    :current="request()->routeIs('dashboard')"
+    wire:navigate
+>
+    <div class="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
+        </svg>
+        {{ __('Dashboard') }}
+    </div>
+    </flux:navlist.item>
+
+    <flux:navlist.group
+        heading="Médicos"
+        expandable
+        :expanded="request()->routeIs('medicos.*')"
+        class="mt-4">
+
+        <flux:navlist.item
+            icon="home"
+            :href="route('medicos.index')"
+            :current="request()->routeIs('medicos.index')"
+            wire:navigate
+        >
+            {{ __('Listar') }}
+        </flux:navlist.item>
+
+        <flux:navlist.item
+            icon="home"
+            :href="route('medicos.create')"
+            :current="request()->routeIs('medicos.create')"
+            wire:navigate
+        >
+            {{ __('Novo') }}
+        </flux:navlist.item>
+    </flux:navlist.group>
+
+    <flux:navlist.group
+        heading="Plantões"
+        expandable
+        :expanded="request()->routeIs('plantoes.*')"
+        class="mt-4">
+
+        <flux:navlist.item
+            icon="home"
+            :href="route('plantoes.index')"
+            :current="request()->routeIs('plantoes.index')"
+            wire:navigate
+        >
+            {{ __('Listar') }}
+        </flux:navlist.item>
+
+        <flux:navlist.item
+            icon="home"
+            :href="route('plantoes.create')"
+            :current="request()->routeIs('plantoes.create')"
+            wire:navigate
+        >
+            {{ __('Novo') }}
+        </flux:navlist.item>
+    </flux:navlist.group>
+
+    <flux:navlist.group
+        heading="Escalas"
+        expandable
+        :expanded="request()->routeIs('escalas.*')"
+        class="mt-4">
+
+        <flux:navlist.item
+            icon="home"
+            :href="route('escalas.index')"
+            :current="request()->routeIs('escalas.index')"
+            wire:navigate
+        >
+            {{ __('Listar') }}
+        </flux:navlist.item>
+
+        <flux:navlist.item
+            icon="home"
+            :href="route('escalas.create')"
+            :current="request()->routeIs('escalas.create')"
+            wire:navigate
+        >
+            {{ __('Nova') }}
+        </flux:navlist.item>
+    </flux:navlist.group>
+
+    <flux:navlist.group
+        heading="Controle de Horas"
+        expandable
+        :expanded="request()->routeIs('controle_horas.*')"
+        class="mt-4">
+
+        <flux:navlist.item
+            icon="home"
+            :href="route('controle_horas.index')"
+            :current="request()->routeIs('controle_horas.index')"
+            wire:navigate
+        >
+            {{ __('Listar') }}
+        </flux:navlist.item>
+
+        <flux:navlist.item
+            icon="home"
+            :href="route('controle_horas.create')"
+            :current="request()->routeIs('controle_horas.create')"
+            wire:navigate
+        >
+            {{ __('Novo') }}
+        </flux:navlist.item>
+    </flux:navlist.group>
+
+</flux:navlist>
+
+<flux:spacer />
+
 
             <flux:navlist variant="outline">
                 <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">

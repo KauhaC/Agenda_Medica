@@ -33,7 +33,7 @@
                                 <form action="{{ route('controle_horas.destroy', $hora) }}" method="POST" style="display:inline" onsubmit="return confirm('Tem certeza que deseja excluir esta entrada?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn-excluir link red">Excluir</button>
+                                    <button type="button" class="btn-excluir link red" id="btn-excluir">Excluir</button>
                                 </form>
                             </td>
                         </tr>
