@@ -5,7 +5,11 @@
 
     <div>
         <h1>Controle de Horas</h1>
-        <a href="{{ route('controle_horas.create') }}" class="link green">+ Nova Entrada</a>
+        <a href="{{ route('controle_horas.create') }}" class="btn btn-primary">Nova Entrada</a>
+
+        @if(session('success'))
+       <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
 
         @if($horas->isEmpty())
             <p>Nenhuma entrada registrada.</p>

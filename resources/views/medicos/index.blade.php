@@ -5,7 +5,11 @@
   <div>
     <div>
       <h1>Meus Médicos</h1>
-      <a href="{{ route('medicos.create') }}" class="link green">+ Novo Médico</a>
+      <a href="{{ route('medicos.create') }}" class="btn btn-primary">Novo Médico</a>
+
+      @if(session('success'))
+      <div class="alert alert-success">{{ session('success') }}</div>
+      @endif
     </div>
 
     @if($medicos->isEmpty())
@@ -44,6 +48,7 @@
                   @method('DELETE')
                   <button type="button" class="btn-excluir link red" id="btn-excluir" data-nome= "{{ $medico->nome }}" >Excluir</button>
                 </form>
+
               </td>
             </tr>
           @endforeach

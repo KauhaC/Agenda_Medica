@@ -33,3 +33,7 @@ icones heroicons
 arquivo sidebar: views>components>layouts>app
 
 estilizar Dashboard
+
+corrigir editar controleHoras
+aplicar botão e interação que acontece nas escalas
+estilizar pag entrada e pag Dashboard

@@ -6,7 +6,7 @@
   <div>
     <h1>Editar Entrada de Horas</h1>
 
-    <form method="POST" action="{{ route('controle_horas.update', $controle_hora) }}">
+    <form action="{{ route('controle_horas.update', $controle_hora) }}"  method="POST">
       @csrf
       @method('PUT')
 
@@ -33,12 +33,22 @@
       </div>
 
       <div class="form-group">
-        <label for="horas_trabalhadas">Horas Trabalhadas:</label>
-        <input type="time" name="horas_trabalhadas" class="form-control" value="{{ $controle_hora->horas_trabalhadas }}" required>
+        <label for="horas">Horas Trabalhadas:</label>
+        <div class="d-flex gap-2">
+          @php
+            $horas = explode(':', $controle_hora->horas_trabalhadas)[0] ?? '0';
+            $minutos = explode(':', $controle_hora->horas_trabalhadas)[1] ?? '0';
+          @endphp
+          <input type="number" name="horas" id="horas" class="form-control" min="0" value="{{ $horas }}" placeholder="Horas" required>
+          <input type="number" name="minutos" id="minutos" class="form-control" min="0" max="59" value="{{ $minutos }}" placeholder="Minutos" required>
+        </div>
       </div>
 
-      <button type="submit" class="btn btn-success">Atualizar</button>
-      <a href="{{ route('controle_horas.index') }}" class="btn btn-secondary">Cancelar</a>
+      <div class="form-buttons">
+        <button type="submit" class="btn atualizar" >Atualizar</button>
+        <a href="{{ route('controle_horas.index') }}" class="btn gray">Cancelar</a>
+      </div>
+
     </form>
   </div>
 </x-layouts.app>

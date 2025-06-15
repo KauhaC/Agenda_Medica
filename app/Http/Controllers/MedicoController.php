@@ -31,9 +31,9 @@ class MedicoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nome'       => 'required|string|max:255',
-            'cpf'        => 'required|string|max:11',
-            'contato'    => 'nullable|string|max:11',
+            'nome'            => 'required|string|max:255',
+            'cpf'             => 'required|string|max:11',
+            'contato'         => 'nullable|string|max:11',
             'especializacao'  => 'string'
         ]);
 
@@ -71,10 +71,10 @@ class MedicoController extends Controller
     {
         $medico = Medicos::findOrFail($id);
         $data = $request->validate([
-            'nome'       => 'required|string|max:255',
-            'cpf'        => 'required|string|max:11',
-            'contato'    => 'nullable|string|max:11',
-            'especializacao'  => 'required|string',
+            'nome'               => 'required|string|max:255',
+            'cpf'                => 'required|string|max:11',
+            'contato'            => 'nullable|string|max:11',
+            'especializacao'     => 'required|string',
         ]);
         
         //if ($medico->created_by !== Auth::id()) {

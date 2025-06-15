@@ -27,9 +27,13 @@
             </div>
 
             <div class="form-group">
-                <label for="horas_trabalhadas">Horas Trabalhadas:</label>
-                <input type="time" name="horas_trabalhadas" class="form-control" required>
+                <label for="horas">Horas Trabalhadas:</label>
+                <div class="d-flex gap-2">
+                    <input type="number" name="horas" class="form-control" min="0" placeholder="Horas" required>
+                    <input type="number" name="minutos" class="form-control" min="0" max="59" placeholder="Minutos" required>
+                </div>
             </div>
+
 
             <button type="submit" class="btn btn-success">Salvar</button>
             <a href="{{ route('controle_horas.index') }}" class="btn btn-secondary">Cancelar</a>

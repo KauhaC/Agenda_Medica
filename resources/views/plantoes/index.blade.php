@@ -5,7 +5,11 @@
   <div>
     <div>
       <h1>Meus Plantões</h1>
-      <a href="{{ route('plantoes.create') }}" class="link green">+ Novo Plantão</a>
+      <a href="{{ route('plantoes.create') }}" class="btn btn-primary">Novo Plantão</a>
+
+      @if(session('success'))
+      <div class="alert alert-success">{{ session('success') }}</div>
+      @endif
     </div>
 
     @if($plantoes->isEmpty())
@@ -41,7 +45,7 @@
                 <form action="{{ route('plantoes.destroy', $plantao) }}" method="POST" style="display:inline" onsubmit="return confirm('Tem certeza que deseja excluir este plantão?')">
                   @csrf
                   @method('DELETE')
-                  <button type="button" class="btn-excluir link red" id="btn-excluir" data-nome= "{{ $plantao->nome }}" >Excluir</button>
+                  <button type="button" class="btn-excluir link red" id="btn-excluir" data-nome= "{{ $plantao->especializacao }}" >Excluir</button>
                 </form>
               </td>
             </tr>

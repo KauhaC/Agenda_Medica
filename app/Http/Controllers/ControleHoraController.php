@@ -24,16 +24,26 @@ class ControleHoraController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'id_medico' => 'required|exists:medicos,id',
-            'id_plantao' => 'required|exists:plantoes,id',
-            'horas_trabalhadas' => 'required',
-        ]);
+    $request->validate([
+        'id_medico' => 'required|exists:medicos,id',
+        'id_plantao' => 'required|exists:plantoes,id',
+        'horas' => 'required|integer|min:0',
+        'minutos' => 'required|integer|min:0|max:59',
+    ]);
 
-        ControleHoras::create($request->all());
+    $horas = str_pad($request->horas, 2, '0', STR_PAD_LEFT);
+    $minutos = str_pad($request->minutos, 2, '0', STR_PAD_LEFT);
+    $horas_trabalhadas = "$horas:$minutos";
 
-        return redirect()->route('controle_horas.index')->with('success', 'Registro criado com sucesso!');
+    ControleHoras::create([
+        'id_medico' => $request->id_medico,
+        'id_plantao' => $request->id_plantao,
+        'horas_trabalhadas' => $horas_trabalhadas,
+    ]);
+
+    return redirect()->route('controle_horas.index')->with('success', 'Registro criado com sucesso!');
     }
+
 
     public function show(ControleHoras $controle_hora)
     {
@@ -48,17 +58,31 @@ class ControleHoraController extends Controller
     }
 
     public function update(Request $request, ControleHoras $controle_hora)
-    {
-        $request->validate([
-            'id_medico' => 'required|exists:medicos,id',
-            'id_plantao' => 'required|exists:plantoes,id',
-            'horas_trabalhadas' => 'required',
-        ]);
+{
 
-        $controle_hora->update($request->all());
+    $request->validate([
+        'id_medico' => 'required|exists:medicos,id',
+        'id_plantao' => 'required|exists:plantoes,id',
+        'horas' => 'required|integer|min:0',
+        'minutos' => 'required|integer|min:0|max:59',
+    ]);
 
-        return redirect()->route('controle_horas.index')->with('success', 'Registro atualizado com sucesso!');
-    }
+    $horas = str_pad($request->horas, 2, '0', STR_PAD_LEFT);
+    $minutos = str_pad($request->minutos, 2, '0', STR_PAD_LEFT);
+    $horas_trabalhadas = "$horas:$minutos";
+
+    $controle_hora->update([
+        'id_medico' => $request->id_medico,
+        'id_plantao' => $request->id_plantao,
+        'horas_trabalhadas' => $horas_trabalhadas,
+    ]);
+
+    
+
+    return redirect()->route('controle_horas.index')->with('success', 'Registro atualizado com sucesso!');
+}
+
+
 
     public function destroy(ControleHoras $controle_hora)
     {
