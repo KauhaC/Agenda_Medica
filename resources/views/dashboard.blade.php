@@ -54,7 +54,7 @@
             </a>
         </div>
 
-        {{-- Você pode manter ou remover essa área inferior --}}
+       
         <div class="relative h-[350px] overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
             <img src="{{ asset('images/hospital.jpg') }}" alt="Imagem de hospital"
             class="w-full h-full object-cover" />

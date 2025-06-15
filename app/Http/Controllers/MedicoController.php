@@ -32,8 +32,8 @@ class MedicoController extends Controller
     {
         $data = $request->validate([
             'nome'            => 'required|string|max:255',
-            'cpf'             => 'required|string|max:11',
-            'contato'         => 'nullable|string|max:11',
+            'cpf'             => 'required|string|digits:11',
+            'contato'         => 'nullable|string|digits:11',
             'especializacao'  => 'string'
         ]);
 
@@ -72,8 +72,8 @@ class MedicoController extends Controller
         $medico = Medicos::findOrFail($id);
         $data = $request->validate([
             'nome'               => 'required|string|max:255',
-            'cpf'                => 'required|string|max:11',
-            'contato'            => 'nullable|string|max:11',
+            'cpf'                => 'required|string|digits:11',
+            'contato'            => 'nullable|string|digits:11',
             'especializacao'     => 'required|string',
         ]);
         

@@ -25,15 +25,3 @@ problemas com key master -> php artisan key:generate
 
 segundo problema -> abrir bash -> npm run dev -> rodar php artisan serve de novo
 
-
-desafio:
-
-estilizar sidebar
-icones heroicons
-arquivo sidebar: views>components>layouts>app
-
-estilizar Dashboard
-
-corrigir editar controleHoras
-aplicar botão e interação que acontece nas escalas
-estilizar pag entrada e pag Dashboard

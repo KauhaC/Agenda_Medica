@@ -11,15 +11,15 @@
         @csrf
             <div class="form-group">
                 <label for="especializacao">Especialização: </label>
-                <input type="text" name="especializacao">
+                <input type="text" name="especializacao" required>
             </div>
             <div class="form-group">
                 <label for="data_inicio">Data de início:</label>
-                <input type="datetime-local" name="data_inicio">
+                <input type="datetime-local" name="data_inicio" required>
             </div>
             <div class="form-group">
                 <label for="data_fim">Data de término:</label>
-                <input type="datetime-local" name="data_fim">
+                <input type="datetime-local" name="data_fim" required>
             </div>
 
             <button type="submit" class="btn btn-success" >Salvar</button>

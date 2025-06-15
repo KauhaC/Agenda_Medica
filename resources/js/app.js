@@ -17,7 +17,7 @@ document.querySelectorAll('.btn-excluir').forEach(button => {
       if (result.isConfirmed) {
         Swal.fire(
           'Excluído!',
-          `"${nome}" foi excluído com sucesso.`,
+          `Conteúdo foi excluído com sucesso.`,
           'success'
         ).then(() => {
           form.submit();
