@@ -32,11 +32,12 @@
                 {{ ($plantao->especializacao) }}
               </td>
               <td title="{{ $plantao->data_inicio }}">
-                {{ ($plantao->data_inicio) }}
+                {{ $plantao->data_inicio->format('d/m/Y') }}
               </td>
               <td title="{{ $plantao->data_fim }}">
-                {{ ($plantao->data_fim) }}
+                {{ $plantao->data_fim->format('d/m/Y') }}
               </td>
+
               <td>
                 <a href="{{ route('plantoes.show', $plantao) }}" class="link blue">Ver</a>
                 |
